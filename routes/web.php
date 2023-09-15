@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TareaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('tarea/registrar', [TareaController::class, 'create']);
+Route::get('tarea/registrar', [TareaController::class, 'create'])->name('tarea.create');
