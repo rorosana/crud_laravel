@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombre', 60);
             $table->string('descripcion')->nullable();//si no marco longitud me lo crea de 255 de largo.
             $table->tinyInteger('finalizada')->default(0);
-            $table->timestamp('fecha limite');
+            $table->timestamp('fecha_limite');
             $table->tinyInteger('urgencia')->comment('0: No es urgente, 1: Urgencia normal, 2: Muy urgente');
             $table->softDeletes();
             $table->timestamps();

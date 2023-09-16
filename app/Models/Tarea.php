@@ -16,7 +16,7 @@ class Tarea extends Model
         'nombre',
         'descripcion',
         'finalizada',
-        'fecha limite',
+        'fecha_limite',
         'urgencia'
     ];
     protected $dates = ['fecha_limite'];
