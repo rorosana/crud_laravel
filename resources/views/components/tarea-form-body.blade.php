@@ -16,21 +16,18 @@
         <label for="SelectUrgencia" class="form-label">* Urgencia</label>
         <select name="urgencia" class="form-select" id="SelectUrgencia">
             @for($i = 0; $i < count($urgencias); $i++)
-
+                <option value= "{{ $i }}" @selected(old('urgencia', $tarea->urgencia))> {{ $urgencias[$i] }}</option>
             @endfor
         </select>
 
     </div>
     <div class="col-sm-4">
         <label for="InputFechaLimite" class="form-label">* Fecha límite</label>
-        <input type="datetime-local" name="fecha_limite" id="InputFechaLimite" class="form-control"
-            value="{{old('fecha_limite')}}">
-
+        <input type="datetime-local" name="fecha_limite" id="InputFechaLimite" class="form-control" value="{{old('fecha_limite', isset($tarea->fecha_limite) ? $tarea->fecha_limite->format('Y-m-d\TH:i') : '')}}">
     </div>
     <div class="col-sm-12">
         <label for="TextAreaDescripcion" class="form-label">Descripción</label>
-        <textarea name="descripcion" id="TextAreaDescripcion" cols="30" rows="10"
-            class="form-control">{{ old('descripcion') }}</textarea>
+        <textarea name="descripcion" id="TextAreaDescripcion" cols="30" rows="10" class="form-control">{{ old('descripcion',  $tarea->descripcion )}}</textarea>
     </div>
     <div class="col-sm-12 text-end my-2">
         <button type="submit" class="btn btn-primary">Guardar</button>

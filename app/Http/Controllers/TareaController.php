@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Tarea;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -56,6 +57,7 @@ class TareaController extends Controller
      */
     public function edit(Tarea $tarea)
     {
+        $tarea->fecha_limite = Carbon::createFromTimestamp($tarea->fecha_limite);
         return view('tarea.edit', compact('tarea'));
     }
 
