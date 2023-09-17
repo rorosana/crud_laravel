@@ -56,7 +56,7 @@ class TareaController extends Controller
      */
     public function edit(Tarea $tarea)
     {
-        //
+        return view('tarea.edit', compact('tarea'));
     }
 
     /**

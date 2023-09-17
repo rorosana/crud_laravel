@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('tarea/registrar', [TareaController::class, 'create'])->name('tarea.create');
 Route::post('tarea/guardar', [TareaController::class, 'store'])->name('tarea.store');
 Route::get('tarea/listar', [TareaController::class, 'index'])->name('tarea.index');
+Route::get('tarea/{tarea}/editar', [TareaController::class, 'edit'])->name('tarea.edit');
