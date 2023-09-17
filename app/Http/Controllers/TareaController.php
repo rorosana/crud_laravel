@@ -13,7 +13,7 @@ class TareaController extends Controller
      */
     public function index()
     {
-        $tarea = Tarea::orderByDesc('id');
+        $tareas = Tarea::orderByDesc('id')->get();
         return view('tarea.index', compact('tareas'));
     }
 
