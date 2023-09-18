@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Carbon\Carbon;
 use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
@@ -20,6 +21,7 @@ class TareaFormBody extends Component
         if( is_null($tarea)){
             $tarea = Tarea::make([
                 'urgencia' => 0,
+                'fecha_limite' => Carbon::now(),
 
             ]);
         }

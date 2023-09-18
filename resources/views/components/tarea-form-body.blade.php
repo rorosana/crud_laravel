@@ -8,7 +8,7 @@
     </div>
     <div class="col-sm-4">
         <div class="form-check">
-            <input type="checkbox" name="finalizada" id="InputFinalizada" class="form-check-input" @checked(old('finalizada', $tarea->finalizada))>
+            <input type="checkbox" name="finalizada" id="InputFinalizada" class="form-check-input" value = "1" @checked(old('finalizada', $tarea->finalizada))>
             <label for="InputFinalizada" class="form-check-label">Finalizada</label>
         </div>
     </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="col-sm-4">
         <label for="InputFechaLimite" class="form-label">* Fecha límite</label>
-        <input type="datetime-local" name="fecha_limite" id="InputFechaLimite" class="form-control" value="{{old('fecha_limite', isset($tarea->fecha_limite) ? $tarea->fecha_limite->format('Y-m-d\TH:i') : '')}}">
+        <input type="datetime-local" name="fecha_limite" id="InputFechaLimite" class="form-control" value="{{old('fecha_limite', $tarea->fecha_limite->format('Y-m-d\TH:i'))}}">
     </div>
     <div class="col-sm-12">
         <label for="TextAreaDescripcion" class="form-label">Descripción</label>

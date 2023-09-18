@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use App\Models\Tarea;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\TareaRequest;
+
 
 class TareaController extends Controller
 {
@@ -28,18 +30,12 @@ class TareaController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TareaRequest $request)
     {
-       $datos = $request->validate(
-        [
-        'nombre' => 'required|max:60',
-        'descripcion' => 'nullable|max:255',
-        'finalizada' => 'nullable|numeric|min:0|max:1',
-        'urgencia' => 'required|numeric|min:0|max:2',
-        'fecha_limite' => 'required|date_format:Y-m-d\TH:i'
-        ]
-        );
+       $datos = $request->validated();
        $tarea = Tarea::create($datos);
        return redirect()->route('tarea.index');
     }
@@ -49,7 +45,8 @@ class TareaController extends Controller
      */
     public function show(Tarea $tarea)
     {
-        //
+        $tarea->fecha_limite = Carbon::createFromTimestamp($tarea->fecha_limite);
+        return view('tarea.show', ['tarea' => $tarea]);
     }
 
     /**
@@ -64,9 +61,11 @@ class TareaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tarea $tarea)
+    public function update(TareaRequest $request, Tarea $tarea)
     {
-        //
+        $datos = $request->validated();
+        $tarea->update($datos);
+        return redirect()->route('tarea.index');
     }
 
     /**
@@ -74,6 +73,7 @@ class TareaController extends Controller
      */
     public function destroy(Tarea $tarea)
     {
-        //
+        $tarea->delete();
+        return redirect()->route('tarea.index');
     }
 }
